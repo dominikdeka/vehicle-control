@@ -1,0 +1,22 @@
+{
+  "name": "vehicle-control",
+  "version": "0.0.1",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "bootstrap": "3.3.4",
+    "jquery": "~1.10.2",
+    "modernizr": "~2.7.0",
+    "html5shiv": "~3.7.0",
+    "font-awesome": "~4.3.0"
+  },
+  "resolutions": {
+    "jquery": "~1.10.2"
+  }
+}
