@@ -1,9 +1,9 @@
 BUILDING
 
-npm install
-grunt
+	npm install
+	grunt
 
 
 RUNNING
 
-npm start
+	npm start
