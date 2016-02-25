@@ -37,7 +37,7 @@ usb.util.claim_interface(dev, USB_IF)
 
 speed_left = 0
 speed_right = 0
-current_speed = 40
+current_speed = 30 
 direction = 0
 while True:
     control = None
@@ -49,16 +49,16 @@ while True:
 
     if control != None:
         if BTN_GEAR_1 in control:
-            current_speed = 40
+            current_speed = 30
 
         if BTN_GEAR_2 in control:
-            current_speed = 55
+            current_speed = 50
 
         if BTN_GEAR_3 in control:
             current_speed = 70
 
         if BTN_GEAR_4 in control:
-	    current_speed = 85
+	    current_speed = 90
 
         if BTN_DOWN in control:
 	    direction = 1
@@ -71,12 +71,12 @@ while True:
             speed_right = current_speed
 
         if BTN_LEFT in control:
-            speed_left = current_speed - 15
-            speed_right = current_speed + 15
+            speed_left = current_speed - 10
+            speed_right = current_speed + 10
 
         if BTN_RIGHT in control:
-	    speed_left = current_speed + 15
-	    speed_right = current_speed - 15
+	    speed_left = current_speed + 10
+	    speed_right = current_speed - 10
 
         if BTN_UP not in control and BTN_DOWN not in control:
 	    direction = 0
@@ -87,14 +87,18 @@ while True:
 	    GPIO.cleanup()
             exit()
 
+	if speed_left > 100:
+	    speed_left = 100
+
+	if speed_right > 100:
+	    speed_right = 100
+
 	if speed_left < 0:
 	    speed_left = 0
 
 	if speed_right < 0:
 	    speed_right = 0
-	print speed_left
-	print speed_right
-	print direction	
+
 	GPIO.output([22, 24], direction)
 	l.start(speed_left)
 	r.start(speed_right)
