@@ -14,7 +14,8 @@
     "jquery": "~1.10.2",
     "modernizr": "~2.7.0",
     "html5shiv": "~3.7.0",
-    "font-awesome": "~4.3.0"
+    "font-awesome": "~4.3.0",
+    "Sortable": "~1.4.2"
   },
   "resolutions": {
     "jquery": "~1.10.2"

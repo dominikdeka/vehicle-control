@@ -29,6 +29,7 @@ module.exports = function(grunt) {
                         '<%= dirs.bower %>jquery/jquery.min.js', 
                         '<%= dirs.bower %>modernizr/modernizr.js', 
                         '<%= dirs.bower %>bootstrap/dist/js/bootstrap.min.js',
+                        '<%= dirs.bower %>Sortable/Sortable.js',
                         'src/js/app.js' 
                     ]
                 }
@@ -51,16 +52,34 @@ module.exports = function(grunt) {
                 files: [
                     {expand: true, cwd: '<%= dirs.bower %>font-awesome/fonts', src: ['*'], dest: 'public/fonts', filter: 'isFile'}
                 ]
+            },
+            dev: {
+                files: [
+                    {expand: true, cwd: 'src', src: ['*'], dest: 'public', filter: 'isFile'},
+                    {expand: true, cwd: '<%= dirs.bower %>jquery', src: ['jquery.min.js'], dest: 'public/js', filter: 'isFile'},
+                    {expand: true, cwd: '<%= dirs.bower %>modernizr', src: ['modernizr.js'], dest: 'public/js', filter: 'isFile'},
+                    {expand: true, cwd: '<%= dirs.bower %>bootstrap/dist/js', src: ['bootstrap.min.js'], dest: 'public/js', filter: 'isFile'},
+                    {expand: true, cwd: '<%= dirs.bower %>Sortable', src: ['Sortable.js'], dest: 'public/js', filter: 'isFile'},
+                    {expand: true, cwd: 'src/js', src: ['app.js'], dest: 'public/js', filter: 'isFile'},
+                ]
             }
+        },
+        processhtml: {
+          dist: {
+            files: {
+              'public/index.html': ['src/index.html']
+            }
+          }
         }
-
     });
 
     grunt.loadNpmTasks('grunt-contrib-htmlmin');
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-processhtml');
 
-    grunt.registerTask('default', [ 'copy', 'uglify', 'htmlmin', 'less']);
+    grunt.registerTask('dev', [ 'copy:dev', 'less']);
+    grunt.registerTask('default', [ 'copy', 'uglify', 'processhtml', 'less']);
 
 };
