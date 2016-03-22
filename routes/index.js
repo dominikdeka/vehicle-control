@@ -6,56 +6,56 @@ var drive = function(actions){
   var direction = actions.shift(); 
       switch(direction){
         case 'up':
-          piblaster.setPwm(22, 0 );
-          piblaster.setPwm(24, 0 );
-          piblaster.setPwm(23, 0.5 );
-          piblaster.setPwm(25, 0.51 );
-          setTimeout(function(){
-                  piblaster.setPwm(23, 0 );
-                  piblaster.setPwm(25, 0 );
-                  if(actions.length >0){
-                    setTimeout(function(){drive(actions);} , 200);
-                  }
-          },1500);
-          break;
-        case 'down':
           piblaster.setPwm(22, 1 );
           piblaster.setPwm(24, 1 );
-          piblaster.setPwm(23, 0.5 );
-          piblaster.setPwm(25, 0.5 );
+          piblaster.setPwm(23, 0.7 );
+          piblaster.setPwm(25, 0.69 );
           setTimeout(function(){
                   piblaster.setPwm(23, 0 );
                   piblaster.setPwm(25, 0 );
                   if(actions.length >0){
                     setTimeout(function(){drive(actions);} , 200);
                   }
-          },1500);
+          },600);
+          break;
+        case 'down':
+          piblaster.setPwm(22, 0 );
+          piblaster.setPwm(24, 0 );
+          piblaster.setPwm(23, 0.7 );
+          piblaster.setPwm(25, 0.69 );
+          setTimeout(function(){
+                  piblaster.setPwm(23, 0 );
+                  piblaster.setPwm(25, 0 );
+                  if(actions.length >0){
+                    setTimeout(function(){drive(actions);} , 200);
+                  }
+          },600);
           break;
         case 'right':
-//          piblaster.setPwm(22, 1 );
           piblaster.setPwm(24, 0 );
-          //piblaster.setPwm(23, 0.5 );
-          piblaster.setPwm(25, 0.5 );
+          piblaster.setPwm(22, 1 );
+          piblaster.setPwm(25, 0.34 );
+          piblaster.setPwm(23, 0.34 );
           setTimeout(function(){
                   piblaster.setPwm(23, 0 );
                   piblaster.setPwm(25, 0 );
                   if(actions.length >0){
                     setTimeout(function(){drive(actions);} , 200);
                   }
-          },750);
+          },300);
           break;
         case 'left':
+          piblaster.setPwm(24, 1 );
           piblaster.setPwm(22, 0 );
-//          piblaster.setPwm(24, 1 );
-          piblaster.setPwm(23, 0.5 );
-//          piblaster.setPwm(25, 0.5 );
+          piblaster.setPwm(25, 0.34 );
+          piblaster.setPwm(23, 0.34 );
           setTimeout(function(){
                   piblaster.setPwm(23, 0 );
                   piblaster.setPwm(25, 0 );
                   if(actions.length >0){
                     setTimeout(function(){drive(actions);} , 200);
                   }
-          },750);
+          },300);
           break;
       }
 }

@@ -38,7 +38,9 @@ $(document).ready(function(){
       success: function(){}
     });
   });
-
+  $('#clear-alg-button').click(function(){
+    $("ul#algorithm").empty();
+  });
   Sortable.create(document.getElementById('directions'), {
     sort: false,
     group:   {
